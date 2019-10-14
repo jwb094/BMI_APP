@@ -22,11 +22,17 @@ function Elements(props){
                     
                         <div class="card-body">
                         <input type="text" class="form-control" id="weight" ></input>
-                        <input type="text" class="form-control" id="weight" ></input>
+                        <select>
+                            <option value="kg">cm</option>
+                            <option value="Ibs">Inches</option>
+                        </select>
                         </div>
                         <div class="card-body">
                         <input type="text" class="form-control" id="weight" ></input>
-                        <input type="text" class="form-control" id="weight" ></input>
+                        <select>
+                            <option value="kg">kg</option>
+                            <option value="Ibs">Ibs</option>
+                        </select>
                         </div>
                     <button type="button" class="btn btn-dark bet" onClick={props.onClickCalculate}>Calcaluate</button>
                     <button type="button" id="reset-game" class="btn btn-secondary reset-game" onClick={props.onClickReset}>Reset</button>  
