@@ -16,20 +16,20 @@ function Elements(props){
                     <h1>What's Your BMI?</h1>
                   
                     
-                    <h6 class="card-title" id="balance">Balance : {props.balance}</h6>
+                    {/* <h6 class="card-title" id="balance">Balance : {props.balance}</h6> */}
             
             
                     
                         <div class="card-body">
-                        <input type="text" class="form-control" id="weight" ></input>
-                        <select>
-                            <option value="kg">cm</option>
-                            <option value="Ibs">Inches</option>
+                        <input type="text" class="form-control" id="height" ></input>
+                        <select id="heightoptions">
+                            <option value="m">metres</option>
+                            <option value="Inches">Inches</option>
                         </select>
                         </div>
                         <div class="card-body">
                         <input type="text" class="form-control" id="weight" ></input>
-                        <select>
+                        <select id="weightoptions">
                             <option value="kg">kg</option>
                             <option value="Ibs">Ibs</option>
                         </select>
@@ -48,14 +48,39 @@ function Elements(props){
                  weight : '',
                  height : '',
                  result : ''
-
-                 
             };
             
             } 
     
           
-    
+            calculate(){
+                this.state.weight = document.getElementById('weight').value;
+                this.state.height = document.getElementById('height').value;
+
+                var woption = document.getElementById("weightoptions").value;
+                var hoption = document.getElementById("heightoptions").value;
+                console.log(this.state.weight);
+                console.log(this.state.height);
+                console.log(woption);
+                console.log(hoption);
+                
+
+                //if()
+                // if (hoption == 'm' && woption == 'kg') {
+                
+                //     console.log(this.state.weight);
+                //     //this.state.result = this.state.weight / (Math.pow(this.state.height,2));
+                //     this.state.result = this.state.weight / Math.pow(this.state.height,2);
+                //     //this.state.result = this.state.weight / this.state.height ** this.state.height;
+                // } else if(hoption == 'Inches' && woption == 'Ibs') {
+                //     this.state.result = (this.state.weight / Math.pow(this.state.height,2)) * 703;
+                // }
+                
+              //  this.state.result = this.state.weight / (Math.pow(this.state.height,2));
+                this.state.result = Math.round(this.state.weight / Math.pow(this.state.height, 2) * 10000);
+                console.log(this.state.result);
+               
+            }
         
             
             
@@ -69,12 +94,9 @@ function Elements(props){
               
             return( 
                 <Elements 
-                onClickGame={() => this.firstHalfButtonEventListener()}
-                onClickmakeBet={() => this.makeBet()} 
-                onClickHit={() => this.hit()}
-                onClickStick={() => this.stick()}
-                balance={this.state.balance}
-                onClickReset={() => this.ResetEventListener()}
+                onClickCalculate={() => this.calculate()}
+                onClickReset={() => this.reset()} 
+                
                 />
                 )
             }
