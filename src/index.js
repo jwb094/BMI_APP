@@ -65,8 +65,10 @@ function Elements(props){
                 console.log(hoption);
                 
 
+                // if hieght is in inches or weight is in pounds do metric
+                if ()
                 //if()
-                // if (hoption == 'm' && woption == 'kg') {
+                 //if (hoption == 'm' && woption == 'kg') {
                 
                 //     console.log(this.state.weight);
                 //     //this.state.result = this.state.weight / (Math.pow(this.state.height,2));
