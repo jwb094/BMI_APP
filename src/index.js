@@ -64,9 +64,14 @@ function Elements(props){
                 console.log(woption);
                 console.log(hoption);
                 
+                //convert to  units to metric
+                if (hoption == 'Inches') this.state.height = (this.state.height * 2.54) / 100;
+                if (woption == "Ibs") this.state.weight = this.state.weight / 2.2046;
 
+                console.log(this.state.height);
+                console.log(this.state.weight);
                 // if hieght is in inches or weight is in pounds do metric
-                if ()
+                //if ()
                 //if()
                  //if (hoption == 'm' && woption == 'kg') {
                 
@@ -78,8 +83,8 @@ function Elements(props){
                 //     this.state.result = (this.state.weight / Math.pow(this.state.height,2)) * 703;
                 // }
                 
-              //  this.state.result = this.state.weight / (Math.pow(this.state.height,2));
-                this.state.result = Math.round(this.state.weight / Math.pow(this.state.height, 2) * 10000);
+                this.state.result = this.state.weight / (Math.pow(this.state.height,2));
+                //this.state.result = Math.round(this.state.weight / Math.pow(this.state.height, 2) * 10000);
                 console.log(this.state.result);
                
             }
