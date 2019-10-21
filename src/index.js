@@ -113,6 +113,12 @@ function Elements(props){
              
 
             }
+
+            reset(){
+                document.getElementById('weight').value  = "";
+                document.getElementById('height').value  = "";;
+    }
+
     
             
             render() {
