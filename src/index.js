@@ -66,14 +66,26 @@ function Elements(props){
                 console.log(hoption);
                 
                 //convert to  units to metric
-                if (hoption == 'Inches') this.state.height = (this.state.height * 2.54) / 100;
-                if (woption == "Ibs") this.state.weight = this.state.weight / 2.2046;
-
+                if (hoption == 'Inches') {
+                   //this.state.height = (this.state.height * 2.54) / 100;
+                    this.setState({
+                        height:(this.state.height * 2.54) / 100
+                    });
+                }
+                if (woption == "Ibs") {
+                   // this.state.weight = this.state.weight / 2.2046;
+                    this.setState({
+                        weight:this.state.weight / 2.2046
+                    });
+                }
                 console.log(this.state.height);
                 console.log(this.state.weight);
       
                 
-                this.state.result = this.state.weight / (Math.pow(this.state.height,2));
+               // this.state.result = this.state.weight / (Math.pow(this.state.height,2));
+                this.setState({
+                    result:this.state.weight / (Math.pow(this.state.height,2))
+                });
                 //this.state.result = Math.round(this.state.weight / Math.pow(this.state.height, 2) * 10000);
                 console.log(this.state.result);
                
