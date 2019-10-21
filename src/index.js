@@ -36,7 +36,7 @@ function Elements(props){
                         </div>
                     <button type="button" class="btn btn-dark bet" onClick={props.onClickCalculate}>Calcaluate</button>
                     <button type="button" id="reset-game" class="btn btn-secondary reset-game" onClick={props.onClickReset}>Reset</button>  
-
+                    <h6 >Result : {props.message}</h6>
         </div>
     )
     }
@@ -47,7 +47,8 @@ function Elements(props){
             this.state = {
                  weight : '',
                  height : '',
-                 result : ''
+                 result : '',
+                 message:''
             };
             
             } 
@@ -70,41 +71,50 @@ function Elements(props){
 
                 console.log(this.state.height);
                 console.log(this.state.weight);
-                // if hieght is in inches or weight is in pounds do metric
-                //if ()
-                //if()
-                 //if (hoption == 'm' && woption == 'kg') {
-                
-                //     console.log(this.state.weight);
-                //     //this.state.result = this.state.weight / (Math.pow(this.state.height,2));
-                //     this.state.result = this.state.weight / Math.pow(this.state.height,2);
-                //     //this.state.result = this.state.weight / this.state.height ** this.state.height;
-                // } else if(hoption == 'Inches' && woption == 'Ibs') {
-                //     this.state.result = (this.state.weight / Math.pow(this.state.height,2)) * 703;
-                // }
+      
                 
                 this.state.result = this.state.weight / (Math.pow(this.state.height,2));
                 //this.state.result = Math.round(this.state.weight / Math.pow(this.state.height, 2) * 10000);
                 console.log(this.state.result);
                
+                if (this.state.result <= 18.5) {
+                    //this.state.message = 'Underweight';
+                    this.setState({
+                        message:'Underweight'
+                    });
+                }  if (this.state.result >= 18.5 ) {
+                   // this.state.message = 'Normal';
+                    this.setState({
+                        message:'Normal'
+                    });
+                }  if (this.state.result >= 25) {
+                    //this.state.message = 'Obese';
+                    this.setState({
+                        message:'Obese'
+                    });
+                } if (this.state.result > 30) {
+                    //this.state.message = 'Overweight';
+                    this.setState({
+                        message:'Overweight'
+                    });
+                }
+             
+
             }
-        
-            
-            
     
-    
-      
- 
-        
             
             render() {
-              
+            
             return( 
                 <Elements 
                 onClickCalculate={() => this.calculate()}
-                onClickReset={() => this.reset()} 
-                
+                onClickReset={() => this.reset()}
+                message={this.state.message}
                 />
+                
+
+                
+          
                 )
             }
     
