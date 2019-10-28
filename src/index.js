@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
 import * as serviceWorker from './serviceWorker';
 
 
@@ -11,32 +11,39 @@ import * as serviceWorker from './serviceWorker';
 function Elements(props){
     console.log(props);
         return (   
-            <div>
+            <div class="row">
 
-                    <h1>What's Your BMI?</h1>
+                    <h1 class="col-md-12">What's Your BMI?</h1>
                   
                     
                     {/* <h6 class="card-title" id="balance">Balance : {props.balance}</h6> */}
             
             
                     
-                        <div class="card-body">
+                        <div class="card-body col-md-6">
                         <input type="text" class="form-control" id="height" ></input>
                         <select id="heightoptions">
                             <option value="m">metres</option>
                             <option value="Inches">Inches</option>
                         </select>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body col-md-6">
                         <input type="text" class="form-control" id="weight" ></input>
                         <select id="weightoptions">
                             <option value="kg">kg</option>
                             <option value="Ibs">Ibs</option>
                         </select>
                         </div>
-                    <button type="button" class="btn btn-dark bet" onClick={props.onClickCalculate}>Calcaluate</button>
-                    <button type="button" id="reset-game" class="btn btn-secondary reset-game" onClick={props.onClickReset}>Reset</button>  
-                    <h6 >Result : {props.message}</h6>
+                        <div className="col-md-12">
+                        &nbsp;
+                            <button type="button" class="btn btn-dark bet" onClick={props.onClickCalculate}>Calcaluate</button>&nbsp;
+                            <button type="button" id="reset-game" class="btn btn-secondary reset-game" onClick={props.onClickReset}>Reset</button>
+                        </div>
+                      <br/>
+                      <div>
+                           &nbsp; &nbsp;<h6 >&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;Result : {props.message}</h6>
+                      </div>
+                       
         </div>
     )
     }
@@ -55,8 +62,12 @@ function Elements(props){
     
           
             calculate(){
-                this.state.weight = document.getElementById('weight').value;
-                this.state.height = document.getElementById('height').value;
+                this.setState({
+                    weight:document.getElementById('weight').value,
+                    height:document.getElementById('height').value
+                });
+              //  this.state.weight = document.getElementById('weight').value;
+              //  this.state.height = document.getElementById('height').value;
 
                 var woption = document.getElementById("weightoptions").value;
                 var hoption = document.getElementById("heightoptions").value;
@@ -66,13 +77,13 @@ function Elements(props){
                 console.log(hoption);
                 
                 //convert to  units to metric
-                if (hoption == 'Inches') {
+                if (hoption === 'Inches') {
                    //this.state.height = (this.state.height * 2.54) / 100;
                     this.setState({
                         height:(this.state.height * 2.54) / 100
                     });
                 }
-                if (woption == "Ibs") {
+                if (woption === "Ibs") {
                    // this.state.weight = this.state.weight / 2.2046;
                     this.setState({
                         weight:this.state.weight / 2.2046
@@ -119,7 +130,7 @@ function Elements(props){
                 document.getElementById('height').value  = "";;
     }
 
-    
+        //NEED TO FIX UP FRONTEND VIEW
             
             render() {
             
